@@ -5,6 +5,7 @@ module YgreneIstioTracing
     class RackMiddleware
 
       def initialize(app)
+        puts 'Tracing Loaded'
         @app = app
       end
 

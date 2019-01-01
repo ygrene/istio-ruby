@@ -6,8 +6,7 @@ module YgreneIstioTracing
   module Tracing
     class Railtie < ::Rails::Railtie
       initializer 'ygrene_istio_tracing.insert_middleware' do |app|
-        puts 'Tracing Loaded'
-        app.middleware.use(::YgreneIstioTracing::Tracing::RackMiddleware)
+        app.middleware.use YgreneIstioTracing::Tracing::RackMiddleware
       end
     end
   end
