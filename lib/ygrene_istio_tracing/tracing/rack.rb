@@ -17,9 +17,11 @@ module YgreneIstioTracing
       end
 
       def extract_http_headers(env)
-        env.select do |k, _v|
-          header = k.upcase.gsub(/^HTTP_/, '').tr('_', '-')
-          PROPAGATION_HEADERS.include?(header)
+        keys = env.transform_keys do |k|
+          k.upcase.gsub(/^HTTP_/, '').tr('_', '-')
+        end
+        keys.select do |k, _v|
+          PROPAGATION_HEADERS.include?(k)
         end
       end
     end
